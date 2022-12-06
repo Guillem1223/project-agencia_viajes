@@ -4,7 +4,7 @@ const reservasController = {};
 
 reservasController.findAll = (req, res) => {
   /* GET users listing. */
-  clientes.findAll().then((data) => {
+  reservas.findAll().then((data) => {
     res.send(data);
   });
 

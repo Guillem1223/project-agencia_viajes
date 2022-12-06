@@ -3,7 +3,6 @@ const indexRouter = require("./routes/index");
 const clientesRouter = require("./routes/clientes");
 const hotelesRouter = require("./routes/hoteles");
 const reservasRouter = require("./routes/reservas");
-const reservasController = require("./controllers/reservas-controller");
 
 router.use("/", indexRouter);
 router.use("/clientes", clientesRouter);
