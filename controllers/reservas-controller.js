@@ -23,7 +23,10 @@ reservasController.findByPk = async (req, res) => {
   const id = req.params.id;
   try {
     const data = await Reservas.findByPk(id, {
-      include: { model: Hoteles, as: "id_hotel_hotele" },
+      include: [
+        { model: Hoteles, as: "id_hotel_hotele" },
+        { model: Clientes, as: "id_cliente_cliente" },
+      ],
     });
     if (data) {
       res.json(data);
@@ -44,7 +47,10 @@ reservasController.findByDateStart = async (req, res) => {
   try {
     const data = await Reservas.findAll({
       where: { fecha_entrada: { [Op.like]: `%${dateStart}%` } },
-      include: [{ model: Hoteles, as: "id_hotel_hotele" }],
+      include: [
+        { model: Hoteles, as: "id_hotel_hotele" },
+        { model: Clientes, as: "id_cliente_cliente" },
+      ],
     });
     if (data) {
       res.json(data);
@@ -65,7 +71,10 @@ reservasController.findByDateEnd = async (req, res) => {
   try {
     const data = await Reservas.findAll({
       where: { fecha_salida: { [Op.like]: `%${dateEnd}%` } },
-      include: [{ model: Hoteles, as: "id_hotel_hotele" }],
+      include: [
+        { model: Hoteles, as: "id_hotel_hotele" },
+        { model: Clientes, as: "id_cliente_cliente" },
+      ],
     });
     if (data) {
       res.json(data);
