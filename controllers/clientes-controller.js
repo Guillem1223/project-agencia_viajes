@@ -1,10 +1,10 @@
-const { clientes } = require("../models/index");
+const { Clientes } = require("../models/index");
 
 const clientesController = {};
 
 clientesController.findAll = (req, res) => {
   /* GET users listing. */
-  clientes.findAll().then((data) => {
+  Clientes.findAll().then((data) => {
     res.send(data);
   });
 
@@ -13,7 +13,7 @@ clientesController.findAll = (req, res) => {
 
 clientesController.findByPk = (req, res) => {
   const id = req.params.id;
-  clientes.findByPk(id).then((data) => {
+  Clientes.findByPk(id).then((data) => {
     res.send(data);
   });
 };

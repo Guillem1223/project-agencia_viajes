@@ -1,10 +1,10 @@
-const { reservas } = require("../models/index");
+const { Reservas } = require("../models/index");
 
 const reservasController = {};
 
 reservasController.findAll = (req, res) => {
   /* GET users listing. */
-  reservas.findAll().then((data) => {
+  Reservas.findAll().then((data) => {
     res.send(data);
   });
 
@@ -13,7 +13,7 @@ reservasController.findAll = (req, res) => {
 
 reservasController.findByPk = (req, res) => {
   const id = req.params.id;
-  reservas.findByPk(id).then((data) => {
+  Reservas.findByPk(id).then((data) => {
     res.send(data);
   });
 };

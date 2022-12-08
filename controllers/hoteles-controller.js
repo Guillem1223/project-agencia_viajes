@@ -1,10 +1,10 @@
-const { hoteles } = require("../models/index");
+const { Hoteles } = require("../models/index");
 
 const hotelesController = {};
 
 hotelesController.findAll = (req, res) => {
   /* GET users listing. */
-  hoteles.findAll().then((data) => {
+  Hoteles.findAll().then((data) => {
     res.send(data);
   });
 
@@ -13,7 +13,7 @@ hotelesController.findAll = (req, res) => {
 
 hotelesController.findByPk = (req, res) => {
   const id = req.params.id;
-  hoteles.findByPk(id).then((data) => {
+  Hoteles.findByPk(id).then((data) => {
     res.send(data);
   });
 };
