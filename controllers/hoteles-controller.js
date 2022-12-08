@@ -56,4 +56,5 @@ hotelesController.findByHotelName = async (req, res) => {
     });
   }
 };
+
 module.exports = hotelesController;
