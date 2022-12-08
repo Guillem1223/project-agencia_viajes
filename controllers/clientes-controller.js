@@ -1,4 +1,4 @@
-const { Clientes, Reservas } = require("../models.js");
+const { Clientes, Reservas, Hoteles } = require("../models.js");
 const { Op } = require("sequelize");
 const clientesController = {};
 
@@ -6,7 +6,13 @@ const clientesController = {};
 clientesController.findAll = async (req, res) => {
   try {
     const data = await Clientes.findAll({
-      include: { model: Reservas, as: "reservas" },
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     res.json(data);
   } catch (error) {
@@ -20,7 +26,11 @@ clientesController.findByPk = async (req, res) => {
   const id = req.params.id;
   try {
     const data = await Clientes.findByPk(id, {
-      include: { model: Reservas, as: "reservas" },
+      include: {
+        model: Reservas,
+        as: "reservas",
+        include: { model: Hoteles, as: "id_hotel_hotele" },
+      },
     });
     if (data) {
       res.json(data);
@@ -41,7 +51,13 @@ clientesController.findByName = async (req, res) => {
   try {
     const data = await Clientes.findAll({
       where: { nombre: { [Op.like]: `%${name}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
@@ -62,7 +78,13 @@ clientesController.findByLastName = async (req, res) => {
   try {
     const data = await Clientes.findAll({
       where: { apellido: { [Op.like]: `%${lastName}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
@@ -83,7 +105,13 @@ clientesController.findByEmail = async (req, res) => {
   try {
     const data = await Clientes.findAll({
       where: { email: { [Op.like]: `%${correo}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
@@ -104,7 +132,13 @@ clientesController.findByDni = async (req, res) => {
   try {
     const data = await Clientes.findAll({
       where: { dni: { [Op.like]: `%${dni}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
@@ -125,7 +159,13 @@ clientesController.findByTlf = async (req, res) => {
   try {
     const data = await Clientes.findAll({
       where: { telefono: { [Op.like]: `%${phone}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Hoteles, as: "id_hotel_hotele" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
