@@ -1,4 +1,4 @@
-const { Hoteles, Reservas } = require("../models.js");
+const { Hoteles, Reservas, Clientes } = require("../models.js");
 const { Op } = require("sequelize");
 const hotelesController = {};
 
@@ -6,7 +6,13 @@ const hotelesController = {};
 hotelesController.findAll = async (req, res) => {
   try {
     const data = await Hoteles.findAll({
-      include: { model: Reservas, as: "reservas" },
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Clientes, as: "id_cliente_cliente" },
+        },
+      ],
     });
     res.json(data);
   } catch (error) {
@@ -20,7 +26,11 @@ hotelesController.findByPk = async (req, res) => {
   const id = req.params.id;
   try {
     const data = await Hoteles.findByPk(id, {
-      include: { model: Reservas, as: "reservas" },
+      include: {
+        model: Reservas,
+        as: "reservas",
+        include: { model: Clientes, as: "id_cliente_cliente" },
+      },
     });
     if (data) {
       res.json(data);
@@ -41,7 +51,13 @@ hotelesController.findByHotelName = async (req, res) => {
   try {
     const data = await Hoteles.findAll({
       where: { nombre_hotel: { [Op.like]: `%${nameHotel}%` } },
-      include: [{ model: Reservas, as: "reservas" }],
+      include: [
+        {
+          model: Reservas,
+          as: "reservas",
+          include: { model: Clientes, as: "id_cliente_cliente" },
+        },
+      ],
     });
     if (data) {
       res.json(data);
