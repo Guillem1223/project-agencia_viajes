@@ -36,24 +36,24 @@ hotelesController.findByPk = async (req, res) => {
   }
 };
 
-// clientesController.findByHotelName = async (req, res) => {
-//   const nameHotel = req.params.nameHotel;
-//   try {
-//     const data = await Hoteles.findAll({
-//       where: { nombre_hotel: { [Op.like]: `%${nameHotel}%` } },
-//       include: [{ model: Reservas, as: "reservas" }],
-//     });
-//     if (data) {
-//       res.json(data);
-//     } else {
-//       res.status(404).send({
-//         message: `Cannot find user with name = ${nameHotel}`,
-//       });
-//     }
-//   } catch (error) {
-//     res.status(500).send({
-//       message: `Error retreiving user retreiving with name = ${nameHotel}`,
-//     });
-//   }
-// };
+hotelesController.findByHotelName = async (req, res) => {
+  const nameHotel = req.params.nameHotel;
+  try {
+    const data = await Hoteles.findAll({
+      where: { nombre_hotel: { [Op.like]: `%${nameHotel}%` } },
+      include: [{ model: Reservas, as: "reservas" }],
+    });
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({
+        message: `Cannot find user with name = ${nameHotel}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: `Error retreiving user retreiving with name = ${nameHotel}`,
+    });
+  }
+};
 module.exports = hotelesController;
