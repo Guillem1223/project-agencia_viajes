@@ -1,20 +1,83 @@
-const { Reservas } = require("../models/index");
-
+const { Reservas, Clientes, Hoteles } = require("../models.js");
+const { Op } = require("sequelize");
 const reservasController = {};
 
-reservasController.findAll = (req, res) => {
-  /* GET users listing. */
-  Reservas.findAll().then((data) => {
-    res.send(data);
-  });
-
-  // res.send("respond with a resource");
+/* GET users listing. */
+reservasController.findAll = async (req, res) => {
+  try {
+    const data = await Reservas.findAll({
+      include: {
+        model: Hoteles,
+        as: "id_hotel_hotele",
+      },
+    });
+    res.json(data);
+  } catch (error) {
+    res.status(500).send({
+      message: "some error ocurred while retrieving reservas.",
+    });
+  }
 };
 
-reservasController.findByPk = (req, res) => {
+reservasController.findByPk = async (req, res) => {
   const id = req.params.id;
-  Reservas.findByPk(id).then((data) => {
-    res.send(data);
-  });
+  try {
+    const data = await Reservas.findByPk(id, {
+      include: { model: Hoteles, as: "id_hotel_hotele" },
+    });
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({
+        message: `Cannot find user with id = ${id}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: `Error retreiving user retreiving with id = ${id}`,
+    });
+  }
+};
+
+reservasController.findByDateStart = async (req, res) => {
+  const dateStart = req.params.dateStart;
+  try {
+    const data = await Reservas.findAll({
+      where: { fecha_entrada: { [Op.like]: `%${dateStart}%` } },
+      include: [{ model: Hoteles, as: "id_hotel_hotele" }],
+    });
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({
+        message: `Cannot find user with name = ${dateStart}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: `Error retreiving user retreiving with name = ${dateStart}`,
+    });
+  }
+};
+
+reservasController.findByDateEnd = async (req, res) => {
+  const dateEnd = req.params.dateEnd;
+  try {
+    const data = await Reservas.findAll({
+      where: { fecha_salida: { [Op.like]: `%${dateEnd}%` } },
+      include: [{ model: Hoteles, as: "id_hotel_hotele" }],
+    });
+    if (data) {
+      res.json(data);
+    } else {
+      res.status(404).send({
+        message: `Cannot find user with name = ${dateEnd}`,
+      });
+    }
+  } catch (error) {
+    res.status(500).send({
+      message: `Error retreiving user retreiving with name = ${dateEnd}`,
+    });
+  }
 };
 module.exports = reservasController;
