@@ -6,10 +6,13 @@ const reservasController = {};
 reservasController.findAll = async (req, res) => {
   try {
     const data = await Reservas.findAll({
-      include: {
-        model: Hoteles,
-        as: "id_hotel_hotele",
-      },
+      include: [
+        {
+          model: Hoteles,
+          as: "id_hotel_hotele",
+        },
+        { model: Clientes, as: "id_cliente_cliente" },
+      ],
     });
     res.json(data);
   } catch (error) {
