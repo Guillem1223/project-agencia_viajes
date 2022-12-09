@@ -5,8 +5,9 @@ const sequelize = new Sequelize(
   process.env.MYSQL_database || config.development.database,
   process.env.MYSQL_username || config.development.username,
   process.env.MYSQL_password || config.development.password,
+
   {
-    host: "localhost",
+    host: process.env.MYSQL_host || "localhost",
     port: 3307,
     dialect: "mysql",
   }
