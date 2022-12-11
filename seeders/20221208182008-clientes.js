@@ -1,8 +1,31 @@
-'use strict';
+"use strict";
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
+    [
+      {
+        nombre: "Andres",
+        apellido: "Feliz",
+        email: "afeliz@gmail.com",
+        telefono: 628965478,
+        dni: "45896251K",
+      },
+      {
+        nombre: "Joel",
+        apellido: "Parra",
+        email: "jparra@gmail.com",
+        telefono: 650248957,
+        dni: "47278954J",
+      },
+      {
+        nombre: "Ante",
+        apellido: "Tomic",
+        email: "atomic@gmail.com",
+        telefono: 689578296,
+        dni: "42365146H",
+      },
+    ];
     /**
      * Add seed commands here.
      *
@@ -11,15 +34,15 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
+     */
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-  }
+  },
 };
