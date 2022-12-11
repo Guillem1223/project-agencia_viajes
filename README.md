@@ -17,7 +17,7 @@ BDD dialect: MySQL
 
 ## DISEÑO DE BDD <a name = "getting_started"></a>
 
-![alt text](/my-server/README/agencia_viajes_reservas_diagram_BDD.png)
+![Diagram BDD](./README/agencia_viajes_reservas_diagram_BDD.png)
 
 ### REQUISITOS
 
