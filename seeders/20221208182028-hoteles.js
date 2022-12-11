@@ -30,6 +30,20 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete("hoteles", [
+      {
+        nombre_hotel: "Mandarin",
+        importe_noche: 130,
+      },
+      {
+        nombre_hotel: "Palauet",
+        importe_noche: 1120,
+      },
+      {
+        nombre_hotel: "Sagrada Familia",
+        importe_noche: 80,
+      },
+    ]);
     /**
      * Add commands to revert seed here.
      *
