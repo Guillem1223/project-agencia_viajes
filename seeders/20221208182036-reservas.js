@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    [
+    await queryInterface.bulkInsert("reservas", [
       {
         fecha_entrada: "2023-02-10",
         fecha_salida: "2023-02-13",
@@ -22,7 +22,7 @@ module.exports = {
         id_hotel: 6,
         id_cliente: 4,
       },
-    ];
+    ]);
     /**
      * Add seed commands here.
      *

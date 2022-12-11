@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    [
+    await queryInterface.bulkInsert("clientes", [
       {
         nombre: "Andres",
         apellido: "Feliz",
@@ -25,7 +25,7 @@ module.exports = {
         telefono: 689578296,
         dni: "42365146H",
       },
-    ];
+    ]);
     /**
      * Add seed commands here.
      *

@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    [
+    await queryInterface.bulkInsert("hoteles", [
       {
         nombre_hotel: "Mandarin",
         importe_noche: 130,
@@ -16,7 +16,7 @@ module.exports = {
         nombre_hotel: "Sagrada Familia",
         importe_noche: 80,
       },
-    ];
+    ]);
 
     /**
      * Add seed commands here.
