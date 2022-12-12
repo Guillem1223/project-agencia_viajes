@@ -2,16 +2,17 @@
 
 ## CONTENIDO
 
-- [About](#about)
-- [Getting Started](#getting_started)
-- [Usage](#usage)
-- [Contributing](../CONTRIBUTING.md)
+- [DESCRIPCIÓN](#about)
+- [DISEÑO DE BDD](#getting_started)
+- [USO](#usage)
+- [ENDPOINTS](#endpoints)
 
 ## DESCRIPCIÓN <a name = "about"></a>
 
-Api: Javascript
+Creación de API y BDD para gestión de reservas de una agencia de viajes, en ella podrás consultar toda la información relacionada con los clientes, las reservas y los hoteles que ofrece la agencia de viajes para alojarse.
+
 <br>
-Librerias/Frameworks: Sequelize, express-generator
+Librerias/Frameworks: Sequelize, Express
 <br>
 BDD dialect: MySQL
 
@@ -33,44 +34,45 @@ Instalar todas la dependencias:
 npm install
 ```
 
+## Uso <a name = "usage"></a>
+
 Iniciar el servidor para desarrollo:
 
 ```
 npm run dev
 ```
 
-## Endpoints <a name = "usage"></a>
+Url Demo para producción: https://project-agenciaviajes-production.up.railway.app/
 
-Url Para produccion: https://project-agenciaviajes-production.up.railway.app/
+Url Para desarrollo, por defecto en Port 3000: localhost:3000
 
-Url Para desarrollo en Port 3000: localhost:3000
+## Endpoints <a name = "endpoints"></a>
 
-Url + /clientes : Mostrara toda la información
-<br>
-Url + /clientes/+ introducir numero id de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
-Url + /clientes/nombre/ + introducir nombre de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
-Url + /clientes/apellido/ + introducir apellido de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
-Url + /clientes/email/ + introducir email de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
-Url + /clientes/dni/ + introducir dni de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
-Url + /clientes/telefono/ + introducir el telefono de un cliente: Mostrara toda la información del cliente seleccionado.
-<br>
+### Clientes
 
-Url + /hoteles: Mostrara toda la información.
-<br>
-Url + /hoteles/ + introducir numero id de un hotel: Mostrara toda la información del hotel seleccionado.
-<br>
-Url + /hoteles/nombre_hotel/ + introducir nombre de hotel: Mostrara toda la información del hotel seleccionado.
-<br>
+| Metodo | Endpoint                     | Descripción                                                         |
+| ------ | ---------------------------- | ------------------------------------------------------------------- |
+| GET    | /clientes                    | Mostrara toda la información.                                       |
+| GET    | /clientes/:id                | Mostrara toda la información del cliente seleccionado por ID.       |
+| GET    | /clientes/nombre/:nombre     | Mostrara toda la información del cliente seleccionado por nombre.   |
+| GET    | /clientes/apellido/:apellido | Mostrara toda la información del cliente seleccionado por apellido. |
+| GET    | /clientes/email/:email       | Mostrara toda la información del cliente seleccionado por apellido. |
+| GET    | /clientes/dni/:dni           | Mostrara toda la información del cliente seleccionado por dni.      |
+| GET    | /clientes/telefono/:telefono | Mostrara toda la información del cliente seleccionado por telefono. |
 
-Url + /reservas: Mostrara toda la información.
-<br>
-Url + /reservas/ + introducir numero id de una reserva.
-<br>
-Url + /reservas/fecha_entrada/ + introducir la fecha de entrada al hotel
-<br>
-Url + /reservas/fecha_salida/ + introducir la fecha de salida del hotel
+### Hoteles
+
+| Metodo | Endpoint                      | Descripción                                                     |
+| ------ | ----------------------------- | --------------------------------------------------------------- |
+| GET    | /hoteles                      | Mostrara toda la información.                                   |
+| GET    | /hoteles/:id                  | Mostrara toda la información del hotel seleccionado por ID.     |
+| GET    | /hoteles/nombre_hotel/:nombre | Mostrara toda la información del hotel seleccionado por nombre. |
+
+### Reservas
+
+| Metodo | Endpoint                       | Descripción                                                        |
+| ------ | ------------------------------ | ------------------------------------------------------------------ |
+| GET    | /reservas                      | Mostrara toda la información.                                      |
+| GET    | /reservas/:id                  | Mostrara toda la información de la reserva seleccionada por ID.    |
+| GET    | /reservas/fecha_entrada/:fecha | Mostrara toda la información de la reserva seleccionada por fecha. |
+| GET    | /reservas/fecha_salida/:fecha  | Mostrara toda la información de la reserva seleccionada por fecha. |
