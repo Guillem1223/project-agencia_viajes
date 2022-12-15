@@ -55,7 +55,7 @@ reservasController.findByDateStart = async (req, res) => {
         { model: Clientes, as: "id_cliente_cliente" },
       ],
     });
-    if (data) {
+    if (data.length > 0) {
       res.json(data);
     } else {
       res.status(404).send({
@@ -79,7 +79,7 @@ reservasController.findByDateEnd = async (req, res) => {
         { model: Clientes, as: "id_cliente_cliente" },
       ],
     });
-    if (data) {
+    if (data.length > 0) {
       res.json(data);
     } else {
       res.status(404).send({

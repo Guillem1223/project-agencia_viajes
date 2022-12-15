@@ -20,11 +20,9 @@ BDD dialect: MySQL
 
 ![Diagram BDD](./README/agencia_viajes_reservas_diagram_BDD.png)
 
-### REQUISITOS
+### PRE-REQUISITOS
 
 -Node.js
-<br>
--Postman para realizar consultas de desarrollador
 
 ### Instalación
 
